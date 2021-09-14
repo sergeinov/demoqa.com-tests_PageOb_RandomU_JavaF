@@ -6,5 +6,12 @@ public class TestData {
             lastName = "TestLastName",
             userEmail = "test@gmail.com",
             userNumber = "5659874563",
-            currentAddress = "Moskow, Lenina 14, a.3";
+            userGender = "Female",
+            userSubject = "Hindi",
+            userHobbies = "Reading",
+            currentAddress = "Lenina 14, a.3",
+            userState = "Haryana",
+            userCity = "Karnal",
+            userPicture = "testPicture.jpg",
+            picturePath = "src/test/resources/img/" + userPicture;
 }
