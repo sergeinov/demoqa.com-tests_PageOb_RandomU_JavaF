@@ -69,7 +69,7 @@ public class RandonUtils {
     }
 
     public static String getRandomEmail() {
-        String emailDomain = "@qa.guru";
+        String emailDomain = "@gmail.com";
 
         return getRandomString(10) + emailDomain;
     }

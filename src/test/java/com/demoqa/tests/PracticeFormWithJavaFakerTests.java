@@ -1,25 +1,25 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.PracticeFormPage;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
-import static com.demoqa.utils.RandonUtils.*;
 
-
-public class PracticeFormWithRandomUtilsTests extends TestBase {
+public class PracticeFormWithJavaFakerTests extends TestBase {
 
     PracticeFormPage practiceFormPage = new PracticeFormPage();
+    Faker faker = new Faker();
 
-    String firstName = getRandomString(10),
-            lastName = getRandomString(10),
-            userEmail = getRandomEmail(),
+    String firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            userEmail = faker.internet().emailAddress(),
             userGender = "Female",
-            userNumber = "7854785412",                           // ! problem -  setValue is String
+            userNumber = faker.number().digits(10),
             userSubject = "Hindi",
             userHobbies = "Reading",
             userPicture = "testPicture.jpg",
             picturePath = "src/test/resources/img/" + userPicture,
-            currentAddress = getRandomMessage(3, 5),
+            currentAddress = faker.address().fullAddress(),
             userState = "Haryana",
             userCity = "Karnal";
 
@@ -30,10 +30,9 @@ public class PracticeFormWithRandomUtilsTests extends TestBase {
         //Step 1: Open page and check title
         practiceFormPage.openPage();
         // Step 2 : Enter values in fields First Name, Last Name, Email
-
         practiceFormPage.typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeEmail(userEmail);
+                        .typeLastName(lastName)
+                        .typeEmail(userEmail);
         // Step 3: Select Gender of user
         practiceFormPage.selectGender(userGender);
         // Step 4: Enter number of mobilePhone
@@ -59,16 +58,16 @@ public class PracticeFormWithRandomUtilsTests extends TestBase {
         practiceFormPage.submitData();
         // Step 13: Checking filled data and checking title
         practiceFormPage.checkTitleResults()
-                .checkResultValue("Student Name", firstName + " " + lastName)
-                .checkResultValue("Student Email", userEmail)
-                .checkResultValue("Gender", userGender)
-                .checkResultValue("Mobile", userNumber)
-                .checkResultValue("Date of Birth", "13 July,2000")
-                .checkResultValue("Subjects", userSubject)
-                .checkResultValue("Hobbies", userHobbies)
-                .checkResultValue("Picture", userPicture)
-                .checkResultValue("Address", currentAddress)
-                .checkResultValue("State and City", userState + " " + userCity);
+                        .checkResultValue("Student Name", firstName + " " + lastName)
+                        .checkResultValue("Student Email", userEmail)
+                        .checkResultValue("Gender", userGender)
+                        .checkResultValue("Mobile", userNumber)
+                        .checkResultValue("Date of Birth", "13 July,2000")
+                        .checkResultValue("Subjects", userSubject)
+                        .checkResultValue("Hobbies", userHobbies)
+                        .checkResultValue("Picture", userPicture)
+                        .checkResultValue("Address", currentAddress)
+                        .checkResultValue("State and City", userState + " " + userCity);
 
     }
 
